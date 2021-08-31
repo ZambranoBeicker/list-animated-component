@@ -1,5 +1,12 @@
+import AnimatedList from "./components/AnimatedList";
 function App() {
-  return <p>hello world</p>;
+  const list = [
+    { value: "Este" },
+    { value: "Es" },
+    { value: "Un" },
+    { value: "Componente" },
+  ];
+  return <AnimatedList list={list} />;
 }
 
 export default App;
