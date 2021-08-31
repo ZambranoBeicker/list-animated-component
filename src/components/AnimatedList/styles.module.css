@@ -1,0 +1,48 @@
+.list-wrapper {
+  border: 1px solid red;
+  width: 210px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.list__icon {
+  margin-right: 1rem;
+}
+
+.list__text {
+  margin-right: auto;
+}
+
+.list__arrow {
+  width: 22px;
+  height: 22px;
+  background: #92929d;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list__arrow > img {
+  display: block;
+  height: auto;
+  width: 0.625rem;
+}
+
+.icon-active {
+  filter: invert(50%) sepia(91%) saturate(1447%) hue-rotate(16deg)
+    brightness(115%) contrast(108%);
+}
+
+.arrow-active {
+  background: #f7ae00;
+}
+
+.color-active {
+  color: #f7ae00;
+}
