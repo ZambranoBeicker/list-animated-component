@@ -42,21 +42,29 @@ function App() {
 
   return (
     <>
+      {/*This div just and example container, you can do your own*/}
       <div style={{ position: "fixed", left: "5%", top: "10%" }}>
         <AnimatedWrapper>
-          {refs.map((item, index) => {
+          {refs.map((item) => {
             return (
               <Fragment key={generateKey(item.value)}>
                 <AnimatedItem
                   value={item.value}
-                  src={item.src}
+                  srcIcon={item.src}
+                  srcArrow="./arrow.svg"
                   ref={item.ref}
+                  areaAfterRef={50}
+                  areaBeforeRef={50}
+                  additionalActiveArea={300}
                 />
               </Fragment>
             );
           })}
         </AnimatedWrapper>
       </div>
+      {/*The above div is just and example container, you can do your own*/}
+
+      {/*Here the refs elements are but you can put them wherever you want*/}
       <div style={styles} ref={ref1}>
         1
       </div>
@@ -78,6 +86,8 @@ function App() {
       <div style={styles} ref={ref7}>
         7
       </div>
+
+      {/*Just something to add more height*/}
       <div style={styles}>6</div>
       <div style={styles}>7</div>
       <div style={styles}>6</div>
