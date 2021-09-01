@@ -1,5 +1,4 @@
 .list-wrapper {
-  border: 1px solid red;
   width: 210px;
 }
 
@@ -8,13 +7,16 @@
   justify-content: space-between;
   margin-top: 30px;
   align-items: center;
+  transition: 0.3s;
 }
 
 .list__icon {
   margin-right: 1rem;
+  transition: 0.3s;
 }
 
 .list__text {
+  transition: 0.3s;
   margin-right: auto;
 }
 
@@ -26,6 +28,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.3s;
 }
 
 .list__arrow > img {
