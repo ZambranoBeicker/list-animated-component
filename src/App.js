@@ -80,6 +80,12 @@ function App() {
       <div style={styles} ref={ref7}>
         7
       </div>
+      <div style={styles}>6</div>
+      <div style={styles}>7</div>
+      <div style={styles}>6</div>
+      <div style={styles}>7</div>
+      <div style={styles}>6</div>
+      <div style={styles}>7</div>
     </>
   );
 }
