@@ -1,10 +1,11 @@
 import { forwardRef, useState, useEffect } from "react";
 import styles from "./styles.module.css";
+
 export function AnimatedWrapper({ children }) {
   return <div className={styles["list-wrapper"]}>{children}</div>;
 }
 
-export const AnimatedItem = forwardRef(({ active, key, value, src }, ref) => {
+export const AnimatedItem = forwardRef(({ value, src }, ref) => {
   const [activeStyles, setActiveStyles] = useState({
     colorActive: "",
     iconActive: "",

@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Descripción
+---
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Una lista con elementos animados según el scroll. Cada elemento se mueve de manera relativa a elementos que se pueden asignar.
 
-## Available Scripts
+# ¿Cómo usar?
+---
 
-In the project directory, you can run:
+Realmente son 2 componentes: `AnimateWrapper` y `AnimatedItem`. El wrapper solo es un contenedor con los estilos necesarios para que todo funcione, mientras que el item recibe por props los datos que necesites que muestre.
 
-### `npm start`
+En este caso tendrás que mapearlos usando los datos que necesites, todo dentro de `AnimatedWrapper`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Las Props
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## AnimatedItem: 
 
-### `npm test`
+* **value**: *string*
+* **src**: *string* (ruta a una imagen)
+* **ref**: *React ref*
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**NOTA**: Siempre procurar que las refs se hayan renderizado antes de pasarlas como props, sino esto puede dar errores.
+Como ejemplo en este proyecto se guardan en un estado que se inicializa cuando el componente `App` es renderizado
 
-### `npm run build`
+##AnimateWrapper
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* **children**: *React components*
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Ejemplo**: Acá se ve como se usan los componentes en conjunto. Solo hay que mapear cada objeto con el `AnimatedItem` y 
+el se encargará del resto
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+        <AnimatedWrapper>
+          {list.map((item, index) => {
+            return (
+              <Fragment key={generateKey(item.value)}>
+                <AnimatedItem
+                  value={item.value}
+                  src={item.src}
+                  ref={item.ref}
+                />
+              </Fragment>
+            );
+          })}
+        </AnimatedWrapper>
 
-### `npm run eject`
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Proximos cambios
+---
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Añadir props para definir las transiciones, colores y el area en el cual se ejecutarán los eventos

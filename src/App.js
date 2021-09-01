@@ -11,7 +11,6 @@ const styles = {
 
 function App() {
   const [refs, setRefs] = useState([]);
-  const [active, setActive] = useState(0);
 
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -52,7 +51,6 @@ function App() {
                   value={item.value}
                   src={item.src}
                   ref={item.ref}
-                  active={index === active ? true : false}
                 />
               </Fragment>
             );
