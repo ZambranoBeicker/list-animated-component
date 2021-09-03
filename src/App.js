@@ -10,7 +10,7 @@ const styles = {
   background: "lightblue",
   height: 50,
   textAlign: "center",
-  marginTop: 200,
+  marginTop: 500,
 };
 
 function App() {
@@ -49,30 +49,24 @@ function App() {
       {/*This div just and example container, you can do your own*/}
       <div style={{ position: "fixed", left: "5%", top: "10%" }}>
         <AnimatedWrapper>
-          {/*
-
-
-
-            //gsap.timeline().to("#" + id, {
-            //scrollTrigger: {
-            //trigger: item.ref.current,
-            //end: "+=500",
-            //},
-            //y: "+=10px",
-            //});
-
-
-          */}
-          <AnimatedItem
-            value="Prueba 1"
-            srcIcon="./checked.svg"
-            srcArrow="./arrow.svg"
-            refClass={".dos"}
-            areaAfterRef={50}
-            areaBeforeRef={50}
-            additionalActiveArea={300}
-            id={generateKey("hola")}
-          />
+          {refs.map((item) => {
+            if (item.ref) {
+              return (
+                <Fragment key={generateKey(item.value)}>
+                  <AnimatedItem
+                    value={item.value}
+                    srcIcon={item.src}
+                    srcArrow="./arrow.svg"
+                    refClass={item.ref}
+                    areaAfterRef={50}
+                    areaBeforeRef={50}
+                    additionalActiveArea={300}
+                    id={generateKey("hola")}
+                  />
+                </Fragment>
+              );
+            }
+          })}
         </AnimatedWrapper>
       </div>
       {/*The above div is just and example container, you can do your own*/}
