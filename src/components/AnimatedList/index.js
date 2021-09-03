@@ -11,10 +11,11 @@ export const AnimatedItem = ({
   value,
   srcIcon,
   srcArrow,
-  additionalActiveArea = 30,
-  areaAfterRef = 130,
-  areaBeforeRef = 60,
-  refClass,
+  areaAfterRef = -200,
+  areaBeforeRef = 200,
+  translatedArea,
+  animationStyles,
+  refTrigger,
   id,
 }) => {
   const [activeStyles, setActiveStyles] = useState({
@@ -24,7 +25,6 @@ export const AnimatedItem = ({
   });
 
   const [rotate, setRotate] = useState({ transform: "rotate(0deg)" });
-  useEffect(() => {}, []);
 
   const toggleActiveClasses = (isActive) => {
     if (isActive) {
@@ -52,12 +52,7 @@ export const AnimatedItem = ({
   return (
     <>
       <ScrollTrigger
-        start={"-80px center"}
-        end={"250px center"}
-        scrub={0.5}
-        markers={true}
-        trigger={refClass}
-        ease={"power1"}
+        trigger={refTrigger}
         inertia={false}
         onEnter={() => {
           toggleActiveClasses(true);
@@ -67,10 +62,16 @@ export const AnimatedItem = ({
           toggleActiveClasses(false);
         }}
         onLeaveBack={() => toggleActiveClasses(false)}
+        scrub={0.5}
+        start="-200px center"
+        end="200px center"
+        inertia={false}
+        ease="power1"
+        {...animationStyles}
       >
         <Tween
           to={{
-            y: "-50px",
+            y: translatedArea,
           }}
         >
           <div className={styles["list-item"]} id={id}>

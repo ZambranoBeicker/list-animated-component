@@ -57,11 +57,15 @@ function App() {
                     value={item.value}
                     srcIcon={item.src}
                     srcArrow="./arrow.svg"
-                    refClass={item.ref}
-                    areaAfterRef={50}
-                    areaBeforeRef={50}
-                    additionalActiveArea={300}
-                    id={generateKey("hola")}
+                    refTrigger={item.ref}
+                    areaAfterTrigger={50}
+                    areaBeforeTrigger={50}
+                    translatedArea={-50}
+                    animationStyles={{
+                      start: "-80px center",
+                      end: "200px center",
+                      scrub: 0,
+                    }}
                   />
                 </Fragment>
               );
