@@ -1,12 +1,16 @@
-import { createRef, useRef, forwardRef, useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./styles.module.css";
 
 import { Tween, ScrollTrigger as ScrollAnimator } from "react-gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { gsap } from "gsap";
 
+//This is important, this is how you register
+//each plugin, then you will be able to use it as
+//the documentation says
 gsap.registerPlugin(ScrollTrigger);
 
+//this is just a simple wrapper
 export function AnimatedWrapper({ children }) {
   return <div className={styles["list-wrapper"]}>{children}</div>;
 }
@@ -20,14 +24,17 @@ export const AnimatedItem = ({
   refTrigger,
   classes,
 }) => {
+  //state for changing the color styles through classes
   const [activeStyles, setActiveStyles] = useState({
     colorActive: "",
     iconActive: "",
     arrowActive: "",
   });
 
+  //state for rotating the arrow icon
   const [rotate, setRotate] = useState({ transform: "rotate(0deg)" });
 
+  //function to abstract the toggling of the classes
   const toggleActiveClasses = (isActive) => {
     if (isActive) {
       setActiveStyles({
@@ -53,6 +60,13 @@ export const AnimatedItem = ({
 
   return (
     <>
+      {/*ScrollTrigger with another name and default props,
+       */}
+      {/*
+      to find more info about the ScrollTrigger API go to:
+      https://bitworking.github.io/react-gsap/src-components-scroll-trigger and 
+      https://greensock.com/docs/v3/Plugins/ScrollTrigger
+      */}
       <ScrollAnimator
         trigger={refTrigger}
         scrub={0.5}
@@ -70,11 +84,17 @@ export const AnimatedItem = ({
         onLeaveBack={() => toggleActiveClasses(false)}
         {...animationStyles}
       >
+        {/*
+        This component is just to say how the movement 
+        itself will be and what kind of movement, 
+        not the scroll animation
+        */}
         <Tween
           to={{
             y: translatedArea,
           }}
         >
+          {/*All the content for the item list*/}
           <div className={styles["list-item"] + " " + classes.itemWrapper}>
             <img
               className={
@@ -85,7 +105,7 @@ export const AnimatedItem = ({
                 activeStyles.iconActive
               }
               src={srcIcon}
-              alt="Arrow Icon"
+              alt="Description Icon"
             />
             <p
               className={
