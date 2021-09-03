@@ -1,5 +1,9 @@
 import { useRef, useState, useEffect, Fragment } from "react";
 import { AnimatedWrapper, AnimatedItem } from "./components/AnimatedList";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { gsap } from "gsap";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const styles = {
   width: "100%",
@@ -45,30 +49,39 @@ function App() {
       {/*This div just and example container, you can do your own*/}
       <div style={{ position: "fixed", left: "5%", top: "10%" }}>
         <AnimatedWrapper>
-          {refs.map((item) => {
-            return (
-              <Fragment key={generateKey(item.value)}>
-                <AnimatedItem
-                  value={item.value}
-                  srcIcon={item.src}
-                  srcArrow="./arrow.svg"
-                  ref={item.ref}
-                  areaAfterRef={50}
-                  areaBeforeRef={50}
-                  additionalActiveArea={300}
-                />
-              </Fragment>
-            );
-          })}
+          {/*
+
+
+
+            //gsap.timeline().to("#" + id, {
+            //scrollTrigger: {
+            //trigger: item.ref.current,
+            //end: "+=500",
+            //},
+            //y: "+=10px",
+            //});
+
+
+          */}
+          <AnimatedItem
+            value="Prueba 1"
+            srcIcon="./checked.svg"
+            srcArrow="./arrow.svg"
+            refClass={".dos"}
+            areaAfterRef={50}
+            areaBeforeRef={50}
+            additionalActiveArea={300}
+            id={generateKey("hola")}
+          />
         </AnimatedWrapper>
       </div>
       {/*The above div is just and example container, you can do your own*/}
 
       {/*Here the refs elements are but you can put them wherever you want*/}
-      <div style={styles} ref={ref1}>
+      <div style={styles} className="uno" ref={ref1}>
         1
       </div>
-      <div style={styles} ref={ref2}>
+      <div style={styles} ref={ref2} className="dos">
         2
       </div>
       <div style={styles} ref={ref3}>
