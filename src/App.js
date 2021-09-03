@@ -1,9 +1,5 @@
 import { useRef, useState, useEffect, Fragment } from "react";
 import { AnimatedWrapper, AnimatedItem } from "./components/AnimatedList";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { gsap } from "gsap";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const styles = {
   width: "100%",

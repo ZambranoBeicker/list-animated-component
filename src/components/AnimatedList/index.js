@@ -1,7 +1,11 @@
 import { createRef, useRef, forwardRef, useState, useEffect } from "react";
 import styles from "./styles.module.css";
 
-import { Tween, ScrollTrigger } from "react-gsap";
+import { Tween, ScrollTrigger as ScrollAnimator } from "react-gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { gsap } from "gsap";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function AnimatedWrapper({ children }) {
   return <div className={styles["list-wrapper"]}>{children}</div>;
@@ -49,7 +53,7 @@ export const AnimatedItem = ({
 
   return (
     <>
-      <ScrollTrigger
+      <ScrollAnimator
         trigger={refTrigger}
         scrub={0.5}
         start="-200px center"
@@ -107,15 +111,7 @@ export const AnimatedItem = ({
             </div>
           </div>
         </Tween>
-      </ScrollTrigger>
+      </ScrollAnimator>
     </>
   );
 };
-
-//const _RefConsumer = forwardRef(({ children, transform }, ref) => {
-//return (
-//<div className={styles["list-item"]} ref={ref}>
-//{children}
-//</div>
-//);
-//});
