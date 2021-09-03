@@ -11,12 +11,10 @@ export const AnimatedItem = ({
   value,
   srcIcon,
   srcArrow,
-  areaAfterRef = -200,
-  areaBeforeRef = 200,
   translatedArea,
   animationStyles,
   refTrigger,
-  id,
+  classes,
 }) => {
   const [activeStyles, setActiveStyles] = useState({
     colorActive: "",
@@ -53,7 +51,11 @@ export const AnimatedItem = ({
     <>
       <ScrollTrigger
         trigger={refTrigger}
+        scrub={0.5}
+        start="-200px center"
+        end="200px center"
         inertia={false}
+        ease="power1"
         onEnter={() => {
           toggleActiveClasses(true);
         }}
@@ -62,11 +64,6 @@ export const AnimatedItem = ({
           toggleActiveClasses(false);
         }}
         onLeaveBack={() => toggleActiveClasses(false)}
-        scrub={0.5}
-        start="-200px center"
-        end="200px center"
-        inertia={false}
-        ease="power1"
         {...animationStyles}
       >
         <Tween
@@ -74,16 +71,38 @@ export const AnimatedItem = ({
             y: translatedArea,
           }}
         >
-          <div className={styles["list-item"]} id={id}>
+          <div className={styles["list-item"] + " " + classes.itemWrapper}>
             <img
-              className={styles["list__icon"] + activeStyles.iconActive}
+              className={
+                styles["list__icon"] +
+                " " +
+                classes.itemWrapper +
+                " " +
+                activeStyles.iconActive
+              }
               src={srcIcon}
               alt="Arrow Icon"
             />
-            <p className={styles["list__text"] + activeStyles.colorActive}>
+            <p
+              className={
+                styles["list__text"] +
+                " " +
+                classes.text +
+                " " +
+                activeStyles.colorActive
+              }
+            >
               {value}
             </p>
-            <div className={styles["list__arrow"] + activeStyles.arrowActive}>
+            <div
+              className={
+                styles["list__arrow"] +
+                " " +
+                classes.arrow +
+                " " +
+                +activeStyles.arrowActive
+              }
+            >
               <img src={srcArrow} alt="Arrow Icon" style={rotate} />
             </div>
           </div>

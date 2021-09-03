@@ -58,14 +58,14 @@ function App() {
                     srcIcon={item.src}
                     srcArrow="./arrow.svg"
                     refTrigger={item.ref}
-                    areaAfterTrigger={50}
-                    areaBeforeTrigger={50}
                     translatedArea={-50}
                     animationStyles={{
                       start: "-80px center",
                       end: "200px center",
                       scrub: 0,
+                      markers: true,
                     }}
+                    classes={{ itemWrapper: "", text: "", arrow: "" }}
                   />
                 </Fragment>
               );
