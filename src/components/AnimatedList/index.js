@@ -104,7 +104,7 @@ export const AnimatedItem = ({
                 " " +
                 classes.arrow +
                 " " +
-                +activeStyles.arrowActive
+                activeStyles.arrowActive
               }
             >
               <img src={srcArrow} alt="Arrow Icon" style={rotate} />
