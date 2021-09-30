@@ -55,7 +55,19 @@ function App() {
   return (
     <>
       {/*This div just and example container, you can do your own*/}
-      <div style={{ position: "fixed", left: "5%", top: "10%" }}>
+      <div
+        style={{
+          position: "fixed",
+
+          position: "fixed",
+          left: 0,
+          top: 0,
+          width: "25%",
+          display: "flex",
+          justifyContent: "center",
+          background: "white",
+        }}
+      >
         <AnimatedWrapper>
           {
             //here i use data, it works because of the rerender of the line 52
